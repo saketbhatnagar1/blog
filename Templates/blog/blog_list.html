@@ -1,0 +1,9 @@
+<h1>All Blogs</h1>
+<ul>
+    {% for blog in blogs %}
+    <li>
+        <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
+        - {{ blog.author }} ({{ blog.created_at }})
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,20 @@
+<h1>{{ blog.title }}</h1>
+<p>{{ blog.content }}</p>
+<p>Category: {{ blog.category }}</p>
+<p>Author: {{ blog.author }}</p>
+<p>Posted on: {{ blog.created_at }}</p>
+
+<h2>Comments</h2>
+<ul>
+    {% for comment in comments %}
+    <li>{{ comment.author }}: {{ comment.content }} ({{ comment.created_at }})</li>
+    {% endfor %}
+</ul>
+
+<h3>Add a Comment</h3>
+<form method="POST" action="{% url 'add_comment' blog.pk %}">
+    {% csrf_token %}
+    <input type="text" name="author" placeholder="Your name">
+    <textarea name="content" placeholder="Add your comment"></textarea>
+    <button type="submit">Submit</button>
+</form>
